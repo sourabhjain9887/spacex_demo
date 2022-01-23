@@ -1,71 +1,66 @@
-td {
+/* .aap-container {
+  justify-content: center;
   text-align: center;
-  padding: 0.7%;
-  background-color: white;
+  align-items: center;
+} */
+
+.aap-container .filters {
+  padding: 20px;
+}
+
+.data_table table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  /* border: 1.5px gray; */
+  /* border-style: ridge; */
+  box-shadow: 4px 5px 18px #888888;
+  border-radius: 10px;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: auto;
+  font-size: 14px;
+}
+
+td,
+th,
+tr {
+  padding: 8px;
+}
+
+table thead tr {
+  background-color: rgb(231, 231, 231);
+}
+
+th {
+  font-weight: normal;
+}
+
+.paginationBttns {
+  width: 82.2%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: end;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 1px;
+  border-radius: 2px;
+  border: 1px solid black;
+  color: black;
   cursor: pointer;
 }
 
-tr {
-  display: flex;
-}
-.Data_Display {
-  display: flex;
-  align-items: center;
-}
-.HeaderCard {
-  display: flex;
-  align-items: center;
-}
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-.Loader {
-  display: flex;
-  justify-content: center;
-  margin-top: 5%;
-}
-.Location,
-.Mission {
-  text-align: left;
-}
-.Paginate {
-  padding: 1%;
-  display: flex;
-  justify-content: space-evenly;
-}
-.Filters {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2%;
-  margin-right: 15%;
-  margin-left: 15%;
-}
-.pagination {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border: 1px solid #ebebe0;
-}
-.pageNumber {
+.paginationBttns a:hover {
   color: black;
+  border: 2px solid black;
 }
-.forwardPage {
+
+.paginationActive a {
   color: black;
-}
-li {
-  float: left;
-}
-li a {
-  display: block;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  border: 1px solid #ebebe0;
-}
-.Head {
-  margin-top: 70px;
+  border: 2px solid black;
 }
