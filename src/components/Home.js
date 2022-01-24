@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import axios from 'axios'
 import  './Home.css';
 import Row from './Row';
 import ReactPaginate from 'react-paginate';
-import filterData from './FilterData';
 import { fetchData } from '../api';
 
 
@@ -11,11 +9,11 @@ const pageSize=10;
 const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [launchData, setLaunchData] = useState();
-    const [filteredLaunchData, setfilteredLaunchData] = useState();
     const heading = ['No','Launched (UTC)','Location','Mission','Orbit','Launch Status','Rocket'];
     const [pageNumber, setPageNumber]   = useState(0);
     const rowsPerPage  = 12;
     const pagesVisited  = pageNumber * rowsPerPage;
+    const [dropDownVlaue, setDropDownVlaue]=useState('All Launches');
 
     // useEffect(() => {
     //     (async () => {
@@ -35,27 +33,35 @@ const Home = () => {
     //   }, []);
 
       useEffect(()=>{
-        const fetchAPI = async ()=>{
-            setLaunchData(await fetchData());
-            setfilteredLaunchData(await fetchData());
+        // const fetchAPI = async ()=>{
+        //     setLaunchData(await fetchData());
+        //     // setfilteredLaunchData(await fetchData());
+        //     setIsLoading(false);
+        // }
+        // fetchAPI();
+        const modifiedData = async ()=>{
+            setLaunchData(await fetchData(dropDownVlaue));
             setIsLoading(false);
         }
+        modifiedData();
 
-        fetchAPI();
-    },[]);
+       
+    },[dropDownVlaue]);
 
+    // console.log(dropDownVlaue);
     // console.log(launchData);
-    // displaying 12 rows per click
-    let displayData  = launchData && launchData.slice(pagesVisited, pagesVisited+rowsPerPage).map((data) => (
-            <Row data={data}/>
-    ))
-    
     
     if (isLoading){
         return(
             <div>Loading...</div>
         )
     }
+
+    // displaying 12 rows per click
+    let displayData  = launchData && launchData.slice(pagesVisited, pagesVisited+rowsPerPage).map((data) => (
+        <Row data={data}/>
+    ))
+
     const pageCount  = Math.ceil(launchData.length / rowsPerPage);
 
     const changePage = ({selected})=>{
@@ -64,12 +70,20 @@ const Home = () => {
 
     // searching with the help of drop down list
     const handleFilterClick = (e)=>{
+        setDropDownVlaue(e.target.value);
+
         // console.log(e.target.value);
-        const value = e.target.value;
+        // const value = e.target.value;
         // console.log(value);
-        let aux = JSON.parse(JSON.stringify(filteredLaunchData));
-         console.log(aux);
-        const aux1 = <filterData data ={aux} />
+        // let aux = JSON.parse(JSON.stringify(filteredLaunchData));
+        // let aux = filteredLaunchData.map((data) => (
+        //     <filterData data ={data} />
+        //  ));
+        // let aux = filteredLaunchData.filter(person => person.launch_success === false && value === 'Failed Launches').map(filteredPerson => (
+        //      <> {filteredPerson}</>
+        //   ))
+        // const aux1 = <filterData aux ={aux} />
+        // console.log(typeof(aux));
         // console.log(aux);
         // displayData= launchData.slice(pagesVisited, pagesVisited+rowsPerPage).map((data) => (
         //     <Row data={data} />
