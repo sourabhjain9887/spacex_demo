@@ -18,7 +18,7 @@
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  table-layout: auto;
+  /* table-layout: auto; */
   font-size: 14px;
 }
 
@@ -34,6 +34,14 @@ table thead tr {
 
 th {
   font-weight: normal;
+}
+
+tbody {
+  width: 1103.3px;
+  height: 60vh;
+}
+tbody tr {
+  height: calc((100% / 12));
 }
 
 .paginationBttns {
@@ -63,4 +71,12 @@ th {
 .paginationActive a {
   color: black;
   border: 2px solid black;
+}
+
+.loading {
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
