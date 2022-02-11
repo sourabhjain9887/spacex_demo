@@ -4,7 +4,7 @@ import "./Home.css";
 import Row from "./Row";
 import ReactPaginate from "react-paginate";
 import { fetchData } from "../api";
-
+import DropdownFilteredData from "../components/DropdownFilteredData";
 const pageSize = 10;
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +24,6 @@ const Home = () => {
   const rowsPerPage = 12;
   const pagesVisited = pageNumber * rowsPerPage;
   const [dropDownVlaue, setDropDownVlaue] = useState("All Launches");
-
   // useEffect(() => {
   //     (async () => {
   //         await axios('https://api.spacexdata.com/v3/launches')
@@ -42,14 +41,13 @@ const Home = () => {
   //     })();
   //   }, []);
 
-  useEffect(() => {
-    console.log("component mounted");
-    return () => {
-      setfilteredLoading(true);
-      //   setPageNumber(0);
-      console.log("home unmounted");
-    };
-  }, []);
+  // useEffect(() => {
+  //   // console.log("component mounted");
+  //   return () => {
+  //     setfilteredLoading(true);
+  //     // console.log("home unmounted");
+  //   };
+  // }, []);
 
   useEffect(() => {
     // const fetchAPI = async ()=>{
@@ -65,11 +63,11 @@ const Home = () => {
       setfilteredLoading(false);
     });
 
-    // return () => {
-    //   setfilteredLoading(true);
-    //   //   setPageNumber(0);
-    //   //   console.log("home unmounted");
-    // };
+    return () => {
+      // setfilteredLoading(true);
+      //   setPageNumber(0);
+      //   console.log("home unmounted");
+    };
   }, [dropDownVlaue]);
 
   // console.log(dropDownVlaue);
@@ -82,25 +80,28 @@ const Home = () => {
   // displaying 12 rows per click
   let displayData;
   if (launchData.length === 0) {
-    displayData = "No results Found for the specifid filter";
-  } else {
-    if (filteredLoading) displayData = <p className="loading">Loading...</p>;
-    else {
-      displayData = launchData
-        .slice(pagesVisited, pagesVisited + rowsPerPage)
-        .map((data) => {
-          return <Row data={data} />;
-        });
-      console.log(displayData.length);
-      const dataLength = 12 - displayData.length;
-      //   console.log(dataLength);
-      for (let i = 0; i < dataLength; i++) {
-        // console.log(i);
-        displayData.push(<Row />);
-        // displayData = [...displayData, <Row key={"emptyRow" + i} />];
-      }
-      //   console.log(displayData.length);
+    displayData = (
+      <div className="noDataDisplay">
+        No results found for the specifid filter
+      </div>
+    );
+  } else if (filteredLoading)
+    displayData = <p className="loading">Loading...</p>;
+  else {
+    displayData = launchData
+      .slice(pagesVisited, pagesVisited + rowsPerPage)
+      .map((data) => {
+        return <Row data={data} />;
+      });
+    console.log(displayData.length);
+    const dataLength = 12 - displayData.length;
+    //   console.log(dataLength);
+    for (let i = 0; i < dataLength; i++) {
+      // console.log(i);
+      displayData.push(<Row />);
+      // displayData = [...displayData, <Row key={"emptyRow" + i} />];
     }
+    //   console.log(displayData.length);
   }
 
   const pageCount = Math.ceil(launchData.length / rowsPerPage);
@@ -113,6 +114,14 @@ const Home = () => {
   // searching with the help of drop down list
   const handleFilterClick = (e) => {
     setDropDownVlaue(e.target.value);
+
+    const value = e.target.value;
+    console.log(value);
+    let modifiedData = <DropdownFilteredData value={value} data={launchData} />;
+    // let modifiedData = value && (
+    //   <DropdownFilteredData value={value} data={launchData} />
+    // );
+    console.log(modifiedData);
 
     // console.log(e.target.value);
     // const value = e.target.value;

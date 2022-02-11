@@ -30,21 +30,36 @@ export const fetchData = async (dropDownVlaue) => {
             dropDownVlaue === "Failed Launches"
         );
         //  console.log(filteredData);
-        return filteredData;
+        // return filteredData;
+        let modData = filteredData.map((value, index) => {
+          return { ...value, flight_number: index + 1 };
+        });
+        // console.log(modData);
+        return modData;
       } else if (dropDownVlaue === "Upcoming Launches") {
         let filteredData = data.filter(
           (person) =>
             person.launch_success === null &&
             dropDownVlaue === "Upcoming Launches"
         );
-        return filteredData;
+        // return filteredData;
+        let modData = filteredData.map((value, index) => {
+          return { ...value, flight_number: index + 1 };
+        });
+        // console.log(modData);
+        return modData;
       } else {
         let filteredData = data.filter(
           (person) =>
             person.launch_success === true &&
             dropDownVlaue === "Sccessful Launches"
         );
-        return filteredData;
+        // return filteredData;
+        let modData = filteredData.map((value, index) => {
+          return { ...value, flight_number: index + 1 };
+        });
+        // console.log(modData);
+        return modData;
       }
       // return data;
     } catch (error) {
@@ -53,7 +68,7 @@ export const fetchData = async (dropDownVlaue) => {
   } else {
     try {
       const { data } = await axios.get(`${url}`);
-      console.log(typeof dropDownVlaue[0]);
+      console.log(dropDownVlaue);
       const min = Number(
         Math.round(new Date(dropDownVlaue[0]).getTime() / 1000).toString()
       );
@@ -66,7 +81,12 @@ export const fetchData = async (dropDownVlaue) => {
           person.launch_date_unix >= min && person.launch_date_unix <= max
       );
       console.log(filteredData);
-      return filteredData;
+      // return filteredData;
+      let modData = filteredData.map((value, index) => {
+        return { ...value, flight_number: index + 1 };
+      });
+      // console.log(modData);
+      return modData;
     } catch (error) {
       console.error(error);
     }
