@@ -8,6 +8,14 @@
   padding: 20px;
 }
 
+.filters {
+  display: flex;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
 .data_table table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -42,6 +50,14 @@ tbody {
 }
 tbody tr {
   height: calc((100% / 12));
+}
+.noDataDisplay {
+  position: fixed;
+  width: 33%;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  margin-left: 25.4vw;
+  margin-top: 5.5vh;
 }
 
 .paginationBttns {

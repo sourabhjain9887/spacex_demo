@@ -1,0 +1,101 @@
+/* .modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200);
+  overflow: visible;
+
+  /* position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+/* } */
+.modalBackground {
+  /* width: 100vw;
+  height: 100vh; */
+  background-color: rgba(200, 200, 200);
+  /* position: fixed; */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* opacity: 0.6; */
+  overflow: auto; /* Enable scroll if needed */
+  /* background-color: rgb(0, 0, 0); Fallback color */
+  background-color: rgba(0, 0, 0, 0.2); /* Black w/ opacity *
+  /* width: 30%; */
+  /* margin-left: 25vw;
+  margin-top: 19vh; */
+  /* z-index: -1;
+  width: 100vw;
+  height: 100vh; */
+}
+.modalContainer {
+  /* width: 100px;
+  height: 100px; */
+  border-radius: 12px;
+  /* background-color: white; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  /* flex-direction: column; */
+  /* padding: 30px; */
+  position: fixed;
+  width: 47%;
+  margin-left: 25.4vw;
+  margin-top: 31.5vh;
+  /* opacity: 100; */
+  background-color: white;
+  /* padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 0px; */
+  padding: 5px;
+  justify-content: space-between;
+
+  /* margin-right: 10vw; */
+  /* overflow: hidden; */
+  /* z-index: -1; */
+  /* width: 50%;
+  margin-left: auto;
+  margin-right: auto; */
+}
+
+.choosefromcolumn {
+  display: block;
+  text-align: start;
+  padding-right: 10px;
+  padding-top: 10px;
+  border-right: 2px solid rgb(230, 230, 230);
+}
+
+.choosefromcolumn input {
+  border-style: none;
+  background-color: white;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.choosefromcolumn input:hover {
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  background-color: rgb(231, 231, 231);
+  border-radius: 6px;
+  /* border: 2px solid rgb(230, 230, 230); */
+  /* border-style: none;
+  background-color: white;
+  padding-bottom: 5px;
+  padding-top: 5px; */
+}
+
+.calendardatepicker {
+  display: flex;
+  /* float: left; */
+  /* justify-content: space-between; */
+}
+
+.calendardatepicker .react-calendar {
+  width: 250px;
+  height: 270px;
+  /* padding: 5px; */
+  margin: 2px;
+  border-style: none;
+}
