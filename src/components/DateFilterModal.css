@@ -41,9 +41,10 @@
   /* flex-direction: column; */
   /* padding: 30px; */
   position: fixed;
-  width: 47%;
+  /* width: 47%; */
+  height: 45.5vh;
   margin-left: 25.4vw;
-  margin-top: 31.5vh;
+  margin-top: 29.7vh;
   /* opacity: 100; */
   background-color: white;
   /* padding-left: 15px;

@@ -1,4 +1,10 @@
 .header {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header hr {
+  /* padding-top: 10px; */
+  margin-top: 15px;
+  border: 1px solid rgb(231, 231, 231);
 }

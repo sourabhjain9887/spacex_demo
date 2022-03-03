@@ -8,6 +8,12 @@
   padding: 20px;
 }
 
+.aap-container .filters .datefilter button {
+  border-style: none;
+  /* background-color: white !important; */
+  cursor: pointer;
+}
+
 .filters {
   display: flex;
   width: 85%;
@@ -89,10 +95,27 @@ tbody tr {
   border: 2px solid black;
 }
 
-.loading {
-  margin-left: auto;
+.data_table tbody .loading {
+  /* margin-left: auto;
   margin-right: auto;
   justify-content: center;
   justify-items: center;
-  align-items: center;
+  align-items: center; */
+  position: fixed;
+  /* z-index: 1; */
+  /* left: 0;
+  top: 0; */
+  width: 80%;
+  /* height: 100%; */
+  /* padding-left: 5vw; */
+  padding-top: 20vh;
+  /* margin-left: auto;
+  margin-right: auto;
+  justify-content: center; */
+}
+
+.aap-container .filters button {
+  /* background-color: white; */
+  /* border-style: none; */
+  /* font-size: 15px; */
 }
