@@ -25,3 +25,8 @@
   font-weight: 600;
   /*border: 0px; */
 }
+td button {
+  border-style: none;
+  background-color: white;
+  cursor: pointer;
+}

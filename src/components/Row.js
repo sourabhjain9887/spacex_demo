@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import MissionDetailsModal from "../components/MissionDetailsModal";
 import "./Home.css";
 import "./Rows.css";
 
 const Row = ({ data = {} }) => {
+  const [missionDetailModalData, setMissionDetailModalData] = useState("");
+  const [modalDisplay, setModalDisplay] = useState(false);
   //  console.log(data);
   const [orbit] = (data &&
     data.rocket &&
@@ -12,6 +15,7 @@ const Row = ({ data = {} }) => {
   // 2006-03-25T10:30:00+12:00
   let year = launch.substring(0, 4);
   let month = Number(launch.substring(5, 7)) - 1;
+  const missionName = data.mission_name;
   // console.log(data.flight_number)
   // console.log(orbit.orbit);
   const months = [
@@ -32,6 +36,11 @@ const Row = ({ data = {} }) => {
   let date = launch.substring(8, 10);
   let time = launch.substring(11, 16);
 
+  const modalDisplayHandler = () => {
+    // console.log(modalDisplay);
+    setModalDisplay(true);
+  };
+
   return (
     <>
       <tr>
@@ -40,7 +49,12 @@ const Row = ({ data = {} }) => {
           {month && year && time && `${date} ${month} ${year} at ${time}`}
         </td>
         <td>{data && data.launch_site && data.launch_site.site_name}</td>
-        <td>{data.mission_name}</td>
+        <td>
+          <button onClick={modalDisplayHandler}>{data.mission_name}</button>
+          {modalDisplay && (
+            <MissionDetailsModal closeModal={setModalDisplay} data={data} />
+          )}
+        </td>
         <td>{orbit.orbit}</td>
         <td>
           {data.launch_success === true ? (

@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "./DateFilterModal.css";
 import "react-calendar/dist/Calendar.css";
 
-const DateFilterModal = ({ dateRange, closeModal }) => {
+const DateFilterModal = ({ dateRange, closeModal, uiDisplayValue }) => {
   const [minDate, setMinDate] = useState(new Date());
   // const [minDateDisplay, setminDateDisplay] = useState(false);
   // const [maxDate, setMaxDate] = useState(new Date());
@@ -33,6 +33,7 @@ const DateFilterModal = ({ dateRange, closeModal }) => {
     datePicker.push(minDate.toDateString());
     datePicker.push(e.toDateString());
     dateRange(datePicker);
+    uiDisplayValue("");
     closeModal(false);
   };
   const handleDateInput = (e) => {
@@ -56,6 +57,7 @@ const DateFilterModal = ({ dateRange, closeModal }) => {
       datePicker.push(min);
       datePicker.push(max);
       dateRange(datePicker);
+      uiDisplayValue(value);
       closeModal(false);
       console.log(dateRange);
       console.log(datePicker);
@@ -70,6 +72,7 @@ const DateFilterModal = ({ dateRange, closeModal }) => {
       datePicker.push(prevMonthFirstDate);
       datePicker.push(prevMonthLastDate);
       dateRange(datePicker);
+      uiDisplayValue(value);
       closeModal(false);
     } else if (value === "Past 3 months") {
       var now = new Date();
@@ -94,6 +97,7 @@ const DateFilterModal = ({ dateRange, closeModal }) => {
       datePicker.push(lastThirdMonthFirstDateStringFormat);
       datePicker.push(prevMonthLastDate.toDateString());
       dateRange(datePicker);
+      uiDisplayValue(value);
       closeModal(false);
       // var new1 = Number(Math.round(new Date(s).getTime() / 1000).toString());
       // console.log(new1);
@@ -122,6 +126,7 @@ const DateFilterModal = ({ dateRange, closeModal }) => {
       datePicker.push(lastFifthMonthFirstDateStringFormat);
       datePicker.push(prevMonthLastDate.toDateString());
       dateRange(datePicker);
+      uiDisplayValue(value);
       closeModal(false);
       // var new1 = Number(Math.round(new Date(s).getTime() / 1000).toString());
       // console.log(new1);
@@ -157,6 +162,7 @@ const DateFilterModal = ({ dateRange, closeModal }) => {
       datePicker.push(firstDay.toDateString());
       datePicker.push(lastDay.toDateString());
       dateRange(datePicker);
+      uiDisplayValue(value);
       closeModal(false);
     } else if (value === "Past 2 years") {
       var now = new Date();
@@ -188,6 +194,7 @@ const DateFilterModal = ({ dateRange, closeModal }) => {
       datePicker.push(firstDay.toDateString());
       datePicker.push(lastDay.toDateString());
       dateRange(datePicker);
+      uiDisplayValue(value);
       closeModal(false);
     }
   };

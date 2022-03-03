@@ -4,8 +4,16 @@ import "./Home.css";
 import Row from "./Row";
 import ReactPaginate from "react-paginate";
 import { fetchData } from "../api";
-import DropdownFilteredData from "../components/DropdownFilteredData";
+import { AiOutlineCalendar } from "react-icons/ai";
+import RingLoader from "react-spinners/RingLoader";
+import HomePagePreLoader from "../components/HomePagePreLoader";
+
 const pageSize = 10;
+const override = `
+  display: block;
+  margin: 0 auto;
+  border-color: black;
+`;
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filteredLoading, setfilteredLoading] = useState(true);
@@ -24,6 +32,10 @@ const Home = () => {
   const rowsPerPage = 12;
   const pagesVisited = pageNumber * rowsPerPage;
   const [dropDownVlaue, setDropDownVlaue] = useState("All Launches");
+  const [loading, setLoading] = useState(true);
+  const [color, setColor] = useState("gray");
+  const [dropDownModalSelectedValue, setDropDownModalSelectedVlaue] =
+    useState("");
   // useEffect(() => {
   //     (async () => {
   //         await axios('https://api.spacexdata.com/v3/launches')
@@ -67,6 +79,12 @@ const Home = () => {
       // setfilteredLoading(true);
       //   setPageNumber(0);
       //   console.log("home unmounted");
+      setfilteredLoading(true);
+      // setDropDownVlaue("");
+      // setDropDownModalSelectedVlaue("");
+      // if (dropDownVlaue === "All Launches") {
+      //   setDropDownModalSelectedVlaue("");
+      // }
     };
   }, [dropDownVlaue]);
 
@@ -74,7 +92,12 @@ const Home = () => {
   //   console.log(launchData);/
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    // return <div>Loading...</div>;
+    return (
+      // <RingLoader color={color} loading={loading} css={override} size={75} />
+      // <h1>Loading...</h1>
+      <HomePagePreLoader></HomePagePreLoader>
+    );
   }
 
   // displaying 12 rows per click
@@ -86,7 +109,12 @@ const Home = () => {
       </div>
     );
   } else if (filteredLoading)
-    displayData = <p className="loading">Loading...</p>;
+    // displayData = <p className="loading">Loading...</p>;
+    displayData = (
+      <div className="loading">
+        <RingLoader color={color} loading={loading} css={override} size={60} />
+      </div>
+    );
   else {
     displayData = launchData
       .slice(pagesVisited, pagesVisited + rowsPerPage)
@@ -111,17 +139,17 @@ const Home = () => {
   };
 
   // console.log(dropDownVlaue);
-  // searching with the help of drop down list
+  // data filtering with the help of drop down list
   const handleFilterClick = (e) => {
+    if (e.target.value === "All Launches") {
+      setDropDownModalSelectedVlaue("");
+    }
     setDropDownVlaue(e.target.value);
 
-    const value = e.target.value;
-    console.log(value);
-    let modifiedData = <DropdownFilteredData value={value} data={launchData} />;
     // let modifiedData = value && (
     //   <DropdownFilteredData value={value} data={launchData} />
     // );
-    console.log(modifiedData);
+    // console.log(moMifiedData);
 
     // console.log(e.target.value);
     // const value = e.target.value;
@@ -147,18 +175,20 @@ const Home = () => {
   return (
     <div className="aap-container">
       <div className="filters">
-        <div>
-          <input
-            type="button"
-            value="Click here"
+        <div className="datefilter">
+          <button
             onClick={() => {
               setdateFilterModal(true);
             }}
-          ></input>
+          >
+            <AiOutlineCalendar />
+          </button>{" "}
+          {dropDownModalSelectedValue}
           {dateFilterModal && (
             <DateFilterModal
               dateRange={setDropDownVlaue}
               closeModal={setdateFilterModal}
+              uiDisplayValue={setDropDownModalSelectedVlaue}
             />
           )}
         </div>
