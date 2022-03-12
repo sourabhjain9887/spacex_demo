@@ -38,7 +38,10 @@ const MissionDetailsModal = ({ closeModal, data }) => {
       setParagraph(modifiedparagraph);
       setDataDisplay(true);
     } else {
-      setParagraph(data.details);
+      const tempData = `${data.rocket.rocket_name} is a reusable, two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of people and payloads into Earth orbit and beyond. ${data.rocket.rocket_name} is the world’s first...`;
+      // setParagraph(data.details);
+      setParagraph(tempData);
+      setDataDisplay(true);
     }
   }, []);
 
@@ -88,7 +91,10 @@ const MissionDetailsModal = ({ closeModal, data }) => {
           <div>
             <img
               style={{ width: 55 }}
-              src={data.links.mission_patch_small}
+              src={
+                (data && data.links && data.links.mission_patch_small) ||
+                "https://iconape.com/wp-content/files/ut/110968/svg/united-states-space-force.svg"
+              }
             ></img>
           </div>
           <div className="headernames">
@@ -99,13 +105,28 @@ const MissionDetailsModal = ({ closeModal, data }) => {
               {data.rocket.rocket_name}
             </div>
             <div className="links">
-              <a href={data.links.article_link}>
+              <a
+                href={
+                  (data && data.links && data.links.article_link) ||
+                  "https://www.nasa.gov/"
+                }
+              >
                 <SiNasa />
               </a>
-              <a href={data.links.wikipedia}>
+              <a
+                href={
+                  (data && data.links && data.links.wikipedia) ||
+                  "https://www.spacex.com/"
+                }
+              >
                 <FaWikipediaW />
               </a>
-              <a href={data.links.video_link}>
+              <a
+                href={
+                  (data && data.links && data.links.video_link) ||
+                  "https://www.youtube.com/"
+                }
+              >
                 <FiYoutube />
               </a>
             </div>

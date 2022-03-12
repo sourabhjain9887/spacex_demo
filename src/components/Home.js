@@ -68,12 +68,14 @@ const Home = () => {
     //     setIsLoading(false);
     // }
     // fetchAPI();
-    fetchData(dropDownVlaue).then((data) => {
-      setPageNumber(0);
-      setLaunchData(data);
-      setIsLoading(false);
-      setfilteredLoading(false);
-    });
+    setTimeout(function () {
+      fetchData(dropDownVlaue).then((data) => {
+        setPageNumber(0);
+        setLaunchData(data);
+        setIsLoading(false);
+        setfilteredLoading(false);
+      });
+    }, 2000);
 
     return () => {
       // setfilteredLoading(true);
@@ -183,7 +185,7 @@ const Home = () => {
           >
             <AiOutlineCalendar />
           </button>{" "}
-          {dropDownModalSelectedValue}
+          <span style={{ fontSize: 13 }}>{dropDownModalSelectedValue}</span>
           {dateFilterModal && (
             <DateFilterModal
               dateRange={setDropDownVlaue}
