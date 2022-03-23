@@ -1,6 +1,6 @@
 .modalBack {
   /* width: 100vw;
-  height: 100vh; */
+  height: ; */
   background-color: rgba(200, 200, 200);
   /* position: fixed; */
   position: fixed;
@@ -40,6 +40,10 @@
   padding-right: 5px;
   padding-top: 5px;
 }
+.modalbody .closebutton :hover {
+  background-color: red;
+  color: white;
+}
 
 .modalbody .headerdata {
   display: flex;
@@ -75,4 +79,19 @@
 .tabledata table {
   box-shadow: none !important;
   text-align: left;
+}
+
+@media (max-width: 480px) {
+  .modalBack {
+    padding-left: 21vw;
+    padding-top: 16vh;
+  }
+  .modalbody {
+    width: 55vw;
+    height: 77vh;
+  }
+  .modalbody .closebutton :hover {
+    background-color: red;
+    color: white;
+  }
 }

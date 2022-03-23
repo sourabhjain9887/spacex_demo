@@ -60,7 +60,13 @@
   margin-left: auto;
   margin-right: auto; */
 }
-
+.modalContainer .modalContainer__closeButton button {
+  background-color: white;
+}
+.modalContainer .modalContainer__closeButton button :hover {
+  background-color: red;
+  color: white;
+}
 .choosefromcolumn {
   display: block;
   text-align: start;
@@ -100,3 +106,70 @@
   margin: 2px;
   border-style: none;
 }
+
+@media (max-width: 480px) {
+  .modalContainer {
+    height: 85vh;
+    margin-left: 0vw;
+    margin-top: 20vh;
+    padding: 5px;
+    display: block;
+  }
+  .modalContainer .modalContainer__closeButton {
+    display: inline-block;
+    /* text-align: end; */
+  }
+  .modalContainer .modalContainer__closeButton button {
+    font-size: 10px;
+  }
+  .modalContainer .modalContainer__closeButton button :hover {
+    background-color: red;
+    color: white;
+  }
+  .choosefromcolumn {
+    padding-right: 0px;
+    padding-top: 0px;
+    display: flex;
+    border-right: 0px;
+    /* justify-content: space-around; */
+    /* overflow: scroll; */
+  }
+  .choosefromcolumn input {
+    background-color: rgb(231, 231, 231);
+    border-radius: 10%;
+  }
+  .modalContainer .choosefromcolumn input {
+    font-size: 10px;
+  }
+  .modalContainer .calendardatepicker {
+    display: inline-block;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    padding-top: 5px;
+  }
+
+  .calendardatepicker .react-calendar {
+    height: 220px;
+    padding: 5px;
+  }
+  .modalContainer
+    .calendardatepicker
+    .react-calendar
+    .react-calendar__navigation {
+    height: 6px;
+  }
+  /* .modalContainer
+    .calendardatepicker
+    .react-calendar
+    .react-calendar__viewContainer
+    .react-calendar__month-view {
+    height: 30px;
+  } */
+  .react-calendar,
+  .react-calendar *,
+  .react-calendar *:before,
+  .react-calendar *:after {
+    height: 25px;
+  }
+} ;

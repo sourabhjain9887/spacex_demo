@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import Calendar from "react-calendar";
 import "./DateFilterModal.css";
 import "react-calendar/dist/Calendar.css";
@@ -202,6 +203,15 @@ const DateFilterModal = ({ dateRange, closeModal, uiDisplayValue }) => {
   return (
     <div className="modalBackground">
       <div className="modalContainer">
+        <div className="modalContainer__closeButton">
+          <button
+            onClick={() => {
+              closeModal(false);
+            }}
+          >
+            <AiOutlineClose />
+          </button>
+        </div>
         <div className="choosefromcolumn">
           <div>
             <input
