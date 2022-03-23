@@ -36,6 +36,7 @@ const Home = () => {
   const [color, setColor] = useState("gray");
   const [dropDownModalSelectedValue, setDropDownModalSelectedVlaue] =
     useState("");
+
   // useEffect(() => {
   //     (async () => {
   //         await axios('https://api.spacexdata.com/v3/launches')
@@ -75,7 +76,7 @@ const Home = () => {
         setIsLoading(false);
         setfilteredLoading(false);
       });
-    }, 2000);
+    }, 1000);
 
     return () => {
       // setfilteredLoading(true);
@@ -114,7 +115,13 @@ const Home = () => {
     // displayData = <p className="loading">Loading...</p>;
     displayData = (
       <div className="loading">
-        <RingLoader color={color} loading={loading} css={override} size={60} />
+        <RingLoader
+          className="ringLoader"
+          color={color}
+          loading={loading}
+          css={override}
+          // size={60}
+        />
       </div>
     );
   else {
@@ -185,7 +192,7 @@ const Home = () => {
           >
             <AiOutlineCalendar />
           </button>{" "}
-          <span style={{ fontSize: 13 }}>{dropDownModalSelectedValue}</span>
+          <span className="fltrName">{dropDownModalSelectedValue}</span>
           {dateFilterModal && (
             <DateFilterModal
               dateRange={setDropDownVlaue}

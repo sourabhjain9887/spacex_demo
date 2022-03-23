@@ -1,8 +1,8 @@
-/* .aap-container {
+.aap-container {
   justify-content: center;
   text-align: center;
   align-items: center;
-} */
+}
 
 .aap-container .filters {
   padding: 20px;
@@ -10,7 +10,6 @@
 
 .aap-container .filters .datefilter button {
   border-style: none;
-  /* background-color: white !important; */
   cursor: pointer;
 }
 
@@ -21,18 +20,17 @@
   margin-right: auto;
   justify-content: space-between;
 }
-
+.filters .datefilter .fltrName {
+  font-size: 13px;
+}
 .data_table table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  /* border: 1.5px gray; */
-  /* border-style: ridge; */
   box-shadow: 4px 5px 18px #888888;
   border-radius: 10px;
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  /* table-layout: auto; */
   font-size: 14px;
 }
 
@@ -60,8 +58,6 @@ tbody tr {
 .noDataDisplay {
   position: fixed;
   width: 33%;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
   margin-left: 25.4vw;
   margin-top: 5.5vh;
 }
@@ -96,26 +92,55 @@ tbody tr {
 }
 
 .data_table tbody .loading {
-  /* margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  justify-items: center;
-  align-items: center; */
   position: fixed;
-  /* z-index: 1; */
-  /* left: 0;
-  top: 0; */
   width: 80%;
-  /* height: 100%; */
-  /* padding-left: 5vw; */
   padding-top: 20vh;
-  /* margin-left: auto;
-  margin-right: auto;
-  justify-content: center; */
 }
 
-.aap-container .filters button {
-  /* background-color: white; */
-  /* border-style: none; */
-  /* font-size: 15px; */
+.data_table tbody .loading .ringLoader {
+  size: 90px;
+}
+
+@media (max-width: 480px) {
+  .aap-container .filters {
+    padding: 10px;
+  }
+  .filters .datefilter .fltrName {
+    font-size: 11px;
+  }
+  .data_table table {
+    font-size: 8px;
+  }
+  .noDataDisplay {
+    width: 33%;
+    margin-left: 21.5vw;
+    margin-top: 5.5vh;
+  }
+
+  .aap-container .filters .dropdown select {
+    font-size: 10px;
+  }
+
+  .paginationBttns {
+    width: 75%;
+  }
+
+  .paginationBttns a {
+    padding: 5px;
+    font-size: 11px;
+  }
+
+  .data_table tbody .loading {
+    width: 65%;
+    padding-top: 23vh;
+  }
+
+  .data_table tbody .loading .css-pslo93 {
+    width: 40px;
+    height: 40px;
+  }
+  .data_table tbody .loading .css-1ogdjpk {
+    width: 40px;
+    height: 40px;
+  }
 }

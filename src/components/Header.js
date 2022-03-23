@@ -6,7 +6,8 @@ const Header = () => {
   return (
     <div className="header">
       {/* <span>SPACEX</span> */}
-      <img style={{ width: 250 }} src={logo} alt="logo"></img>
+      <img src={logo} alt="logo"></img>
+      {/* style={{ width: 250 }} */}
       <hr></hr>
     </div>
   );
